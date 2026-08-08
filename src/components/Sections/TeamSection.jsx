@@ -9,7 +9,7 @@ import { fadeUp } from '../../animations/variants'
 const team = [
   {
     name: 'Om',
-    role: 'web',
+    role: 'Web Developer',
     img: '/assets/img/team/om-removebg-preview.png',
     color: '#b0e7f5ff',
     linkedin: '#',
@@ -18,7 +18,7 @@ const team = [
   },
   {
     name: 'Nisha',
-    role: 'Head of Design',
+    role: 'Business  Manager',
     img: '/assets/img/team/nisha-removebg-preview.png',
     color: '#f9d6ea',
     linkedin: '#',
@@ -27,7 +27,7 @@ const team = [
   },
   {
     name: 'Tarandeep',
-    role: 'Lead Developer',
+    role: 'Head of Marcomm & Content',
     img: '/assets/img/team/tara-removebg-preview.png',
     color: '#d9f5a0',
     linkedin: '#',
@@ -36,7 +36,7 @@ const team = [
   },
   {
     name: 'Kriti',
-    role: 'Project Manager',
+    role: 'Admin Manager',
     img: '/assets/img/team/kriti-removebg-preview.png',
     color: '#ffe0b0',
     linkedin: '#',
@@ -44,7 +44,7 @@ const team = [
     instagram: '#',
   },
   {
-    name: 'Dheeraj',
+    name: 'Dheeraj Aggarwal',
     role: 'Founder & CEO',
     img: '/assets/img/team/sitara-removebg-preview.png',
     color: '#c8d8fc',
@@ -53,8 +53,8 @@ const team = [
     instagram: '#',
   },
   {
-    name: 'Dheeraj',
-    role: 'SEO',
+    name: 'Dheeraj Joshi',
+    role: 'SEO & Digital Marketing',
     img: '/assets/img/team/cutiiii-removebg-preview.png',
     color: '#fce8ac',
     linkedin: '#',
