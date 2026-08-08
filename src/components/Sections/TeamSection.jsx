@@ -9,7 +9,7 @@ import { fadeUp } from '../../animations/variants'
 const team = [
   {
     name: 'Om',
-    role: 'Founder & CEO',
+    role: 'web',
     img: '/assets/img/team/om-removebg-preview.png',
     color: '#b0e7f5ff',
     linkedin: '#',
@@ -26,7 +26,7 @@ const team = [
     instagram: '#',
   },
   {
-    name: 'Tara',
+    name: 'Tarandeep',
     role: 'Lead Developer',
     img: '/assets/img/team/tara-removebg-preview.png',
     color: '#d9f5a0',
@@ -44,8 +44,8 @@ const team = [
     instagram: '#',
   },
   {
-    name: 'Sitara',
-    role: 'Digital Strategist',
+    name: 'Dheeraj',
+    role: 'Founder & CEO',
     img: '/assets/img/team/sitara-removebg-preview.png',
     color: '#c8d8fc',
     linkedin: '#',
@@ -53,8 +53,8 @@ const team = [
     instagram: '#',
   },
   {
-    name: 'Cutiiii',
-    role: 'UI/UX Designer',
+    name: 'Dheeraj',
+    role: 'SEO',
     img: '/assets/img/team/cutiiii-removebg-preview.png',
     color: '#fce8ac',
     linkedin: '#',
@@ -63,7 +63,7 @@ const team = [
     instagram: '#',
   },
   {
-    name: 'Anuj Cutiiii',
+    name: 'Anuj',
     role: 'UI/UX Designer',
     img: '/assets/img/team/Anuj-cutiiii-removebg-preview.png',
     color: '#c8f5b0',
@@ -73,7 +73,7 @@ const team = [
     instagram: '#',
   },
   {
-    name: 'MUKU Cutiiii',
+    name: 'Muskan',
     role: 'UI/UX Designer',
     img: '/assets/img/team/Muku.png',
     color: '#ffb9d6ff',
