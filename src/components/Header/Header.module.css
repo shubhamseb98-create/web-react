@@ -1,0 +1,490 @@
+/* ── Default Header ── */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  z-index: var(--z-header);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+}
+
+/* Header hides when scrolled */
+.headerHidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-100%);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logoImg {
+  height: 45px;
+  width: auto;
+  display: block;
+}
+
+/* ── Desktop Navigation ── */
+.desktopNav {
+  gap: 2.5rem;
+}
+
+.navLink {
+  font-size: 0.95rem;
+  font-weight: var(--fw-medium);
+  color: var(--clr-text-light);
+  position: relative;
+  padding-block: 0.5rem;
+}
+
+.navItemWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.hasDropdown {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  transition: all var(--transition-fast);
+}
+
+.hasDropdown:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+}
+
+.dropdownIcon {
+  transition: transform var(--transition-fast);
+  opacity: 0.7;
+}
+
+.navItemWrapper {
+  position: relative;
+  /* Add padding bottom to create a bridge so hover doesn't break */
+  padding-bottom: 10px;
+}
+
+.navItemWrapper:hover .dropdownIcon {
+  transform: rotate(180deg);
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #0b0f14;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 1.5rem 0;
+  min-width: 260px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all var(--transition-normal);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+}
+
+.navItemWrapper:hover .dropdownMenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdownMenu a {
+  color: var(--clr-text-light);
+  padding: 0.75rem 2rem;
+  transition: all var(--transition-fast);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.dropdownMenu a:hover {
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--clr-white);
+}
+
+.navLink:hover {
+  color: var(--clr-white);
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--gradient-primary);
+  transition: width var(--transition-normal);
+  border-radius: 2px;
+}
+
+.navLink:hover::after {
+  width: 100%;
+}
+
+/* ── CTA Button ── */
+.ctaButton {
+  background: var(--clr-white);
+  color: var(--clr-dark);
+  padding: 0.75rem 1.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.95rem;
+  font-weight: var(--fw-semibold);
+  transition: all var(--transition-normal);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ctaButton:hover {
+  background: var(--gradient-primary);
+  color: var(--clr-white);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-primary);
+}
+
+/* ── Mobile Toggle (for small screens at top) ── */
+.mobileToggle {
+  background: none;
+  border: none;
+  color: var(--clr-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+/* ── Floating Pill Button (appears on scroll) ── */
+.floatingPill {
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  z-index: calc(var(--z-header) + 10);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(15, 15, 20, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #fff;
+  padding: 0.65rem 1.25rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  transition: all 0.25s ease;
+  letter-spacing: 0.02em;
+}
+
+.floatingPill:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+.floatingPill span {
+  font-family: var(--font-heading);
+}
+
+/* ── Backdrop ── */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: calc(var(--z-header) + 15);
+  touch-action: none;
+  overflow: hidden;
+}
+
+/* ── Side Drawer ── */
+.sideDrawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  /* strict bounding */
+  width: 100%;
+  max-width: 400px;
+  background: #18181b;
+  z-index: calc(var(--z-header) + 20);
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 2.5rem 3rem;
+  box-sizing: border-box;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  box-shadow: -20px 0 60px rgba(0, 0, 0, 0.6);
+}
+
+/* Drawer Header */
+.drawerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-top: 0.5rem;
+  flex-shrink: 0;
+}
+
+.drawerLogo {
+  height: 40px;
+  width: auto;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0.4rem;
+  transition: color 0.2s;
+}
+
+.closeBtn:hover {
+  color: #fff;
+}
+
+/* Drawer Nav */
+.drawerNav {
+  display: flex;
+  flex-direction: column;
+}
+
+.drawerNavItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 1.25rem 0;
+}
+
+.drawerNavItem svg {
+  color: rgba(255, 255, 255, 0.35);
+  flex-shrink: 0;
+}
+
+.drawerNavLink {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.2s;
+  letter-spacing: -0.01em;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* The growing line */
+.drawerNavLink::after {
+  content: '';
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 2px;
+  background: var(--clr-primary, #4CAF50);
+  margin-left: 15px;
+  transition: width 0.3s ease;
+}
+
+/* The dot at the end */
+.drawerNavLink::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 15px + 40px);
+  /* 15px margin + 40px line width */
+  width: 8px;
+  height: 8px;
+  background: var(--clr-primary, #4CAF50);
+  border-radius: 50%;
+  transform: translateY(-50%) scale(0);
+  transition: transform 0.3s ease;
+}
+
+.drawerNavLink:hover {
+  color: var(--clr-primary);
+}
+
+.drawerNavLink:hover::after {
+  width: 40px;
+}
+
+.drawerNavLink:hover::before {
+  transform: translateY(-50%) scale(1);
+}
+
+.drawerNavItemWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.drawerDropdownToggle {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s;
+}
+
+.drawerDropdownToggle:hover {
+  color: #fff;
+}
+
+.drawerDropdownMenu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.drawerDropdownLink {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 15px;
+  padding: 0.75rem 0;
+  transition: color 0.2s;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* The growing line */
+.drawerDropdownLink::after {
+  content: '';
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 2px;
+  background: var(--clr-primary, #4CAF50);
+  margin-left: 15px;
+  transition: width 0.3s ease;
+}
+
+/* The dot at the end */
+.drawerDropdownLink::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 15px + 40px);
+  /* 15px margin + 40px line width */
+  width: 8px;
+  height: 8px;
+  background: var(--clr-primary, #4CAF50);
+  border-radius: 50%;
+  transform: translateY(-50%) scale(0);
+  transition: transform 0.3s ease;
+}
+
+.drawerDropdownLink:hover {
+  color: var(--clr-primary);
+}
+
+.drawerDropdownLink:hover::after {
+  width: 40px;
+}
+
+.drawerDropdownLink:hover::before {
+  transform: translateY(-50%) scale(1);
+}
+
+/* Drawer Socials */
+.drawerSocials {
+  margin-top: 2.5rem;
+  flex-shrink: 0;
+}
+
+.drawerSocials h6 {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.socialRow {
+  display: flex;
+  gap: 0.85rem;
+}
+
+.socialRow a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.socialRow a:hover {
+  background: var(--clr-primary);
+  border-color: var(--clr-primary);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* ── Mobile Menu (old dropdown, still used on small screens) ── */
+.mobileMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: var(--clr-dark-2);
+  border-bottom: 1px solid var(--clr-border-dark);
+  padding: 2rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mobileNavLink {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: var(--fw-semibold);
+  color: var(--clr-white);
+  border-bottom: 1px solid var(--clr-border-dark);
+  padding-bottom: 1rem;
+}

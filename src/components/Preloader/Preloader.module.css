@@ -1,0 +1,53 @@
+.preloader {
+  position: fixed;
+  inset: 0;
+  background-color: #050505;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* The row of letters */
+.wordRow {
+  display: flex;
+  align-items: center;
+  gap: 0.04em;
+  overflow: hidden;     /* Clips letters flying in from below */
+}
+
+/* Each individual letter */
+.letter {
+  display: inline-block;
+  font-family: var(--font-heading, sans-serif);
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  /* Gradient fill — same luxury feel as footer */
+  background: linear-gradient(135deg, #ffffff 0%, #888888 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  /* Allow scale/translate transforms */
+  will-change: transform, opacity;
+  cursor: default;
+  user-select: none;
+}
+
+/* Sweeping underline accent */
+.underline {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--clr-primary, #4CAF50), transparent);
+  border-radius: 2px;
+  transform-origin: left center;
+}

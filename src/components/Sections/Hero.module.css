@@ -1,0 +1,175 @@
+.heroSection {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 700px;
+  background: var(--clr-dark);
+}
+
+.swiperContainer {
+  width: 100%;
+  height: 100%;
+}
+
+.slideInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.bgImage {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  transform: scale(1.05);
+  transition: transform 6s ease-out;
+}
+
+:global(.swiper-slide-active) .bgImage {
+  transform: scale(1);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.2) 100%);
+  z-index: 1;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  /* Reduced from 4.5rem max */
+  font-weight: var(--fw-bold);
+  color: var(--clr-white);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.description {
+  font-family: var(--font-body);
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  /* Reduced from 1.25rem max */
+  color: var(--clr-text-light);
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+  max-width: 800px;
+}
+
+.btnOutline {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  border: 1px solid var(--clr-white);
+  color: var(--clr-white);
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all var(--transition-normal);
+  background: transparent;
+}
+
+.btnOutline:hover {
+  background: var(--clr-white);
+  color: var(--clr-dark);
+}
+
+/* Custom Controls */
+.sliderControls {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 2rem;
+  top: auto;
+  transform: none;
+  z-index: 10;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .sliderControls {
+    right: 2rem;
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .sliderControls {
+    right: 4rem;
+  }
+}
+
+:global(.custom-pagination) {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  :global(.custom-pagination) {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+}
+
+:global(.custom-pagination .swiper-pagination-bullet) {
+  width: 12px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 0;
+  margin: 0 !important;
+  opacity: 1;
+  transition: all var(--transition-normal);
+  cursor: pointer;
+}
+
+:global(.custom-pagination .swiper-pagination-bullet-active) {
+  width: 24px;
+  background: var(--clr-white);
+}
+
+.arrows {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 0.5rem 1rem;
+  border-radius: 40px;
+  backdrop-filter: blur(4px);
+}
+
+.arrows button {
+  color: var(--clr-white);
+  font-size: 1.25rem;
+  opacity: 0.7;
+  transition: opacity var(--transition-normal);
+}
+
+.arrows button:hover {
+  opacity: 1;
+}
+
+.divider {
+  width: 1px;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.3);
+}
