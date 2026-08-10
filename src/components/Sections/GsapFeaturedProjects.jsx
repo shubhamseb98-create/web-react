@@ -101,7 +101,6 @@ const GsapFeaturedProjects = () => {
     })
 
     return () => {
-        ScrollTrigger.getAll().forEach(t => t.kill())
         window.removeEventListener("mousemove", handleMouseMove)
     }
   }, { scope: containerRef })
