@@ -44,7 +44,7 @@ const team = [
     instagram: '#',
   },
   {
-    name: 'Dheeraj Aggarwal',
+    name: 'Dheeraj <br> Aggarwal',
     role: 'Founder & CEO',
     img: '/assets/img/team/sitara-removebg-preview.png',
     color: '#c8d8fc',
@@ -53,7 +53,7 @@ const team = [
     instagram: '#',
   },
   {
-    name: 'Dheeraj Joshi',
+    name: 'Dheeraj <br> Joshi',
     role: 'SEO & Digital Marketing',
     img: '/assets/img/team/cutiiii-removebg-preview.png',
     color: '#fce8ac',
@@ -279,7 +279,7 @@ const TeamSection = () => {
                     if (!isCenter) { goTo(idx); resetAutoplay() }
                   }}
                   role={!isCenter ? 'button' : undefined}
-                  aria-label={!isCenter ? `View ${member.name}` : undefined}
+                  aria-label={!isCenter ? `View ${member.name.replace(/<br\s*\/?>/gi, ' ')}` : undefined}
                 >
                   <div
                     className={`${styles.pillCard} ${isCenter ? styles.pillCardActive : ''}`}
@@ -287,7 +287,7 @@ const TeamSection = () => {
                   >
                     {/* name + role */}
                     <div className={styles.cardMeta}>
-                      <span className={styles.memberName}>{member.name}</span>
+                      <span className={styles.memberName} dangerouslySetInnerHTML={{ __html: member.name }}></span>
                       <span className={styles.memberRole}>{member.role}</span>
                     </div>
 
@@ -295,7 +295,7 @@ const TeamSection = () => {
                     <div className={styles.photoWrap}>
                       <img
                         src={member.img}
-                        alt={member.name}
+                        alt={member.name.replace(/<br\s*\/?>/gi, ' ')}
                         className={styles.memberPhoto}
                         draggable={false}
                         loading="lazy"
@@ -348,7 +348,7 @@ const TeamSection = () => {
               onClick={() => { goTo(idx); resetAutoplay() }}
               role="tab"
               aria-selected={idx === active}
-              aria-label={`Go to ${team[idx].name}`}
+              aria-label={`Go to ${team[idx].name.replace(/<br\s*\/?>/gi, ' ')}`}
             />
           ))}
         </div>
