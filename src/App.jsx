@@ -4,18 +4,22 @@ import AppRoutes from './routes/AppRoutes'
 import { useLenis } from './hooks/useLenis'
 import Preloader from './components/Preloader/Preloader'
 
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
 function ScrollToTop() {
   const { pathname } = useLocation()
 
   useEffect(() => {
-    // Add a slight delay to ensure the DOM is fully rendered for Lenis
+    // Add a slight delay to ensure the DOM is fully rendered for Lenis & GSAP
     const timer = setTimeout(() => {
       if (window.lenis) {
         window.lenis.scrollTo(0, { immediate: true })
       } else {
         window.scrollTo(0, 0)
       }
-    }, 50)
+      // Force GSAP to recalculate pinned element heights on the new page
+      ScrollTrigger.refresh()
+    }, 100)
     
     return () => clearTimeout(timer)
   }, [pathname])

@@ -34,8 +34,18 @@ const Header = () => {
 
   /* Lock scroll */
   useEffect(() => {
-    document.documentElement.style.overflow = isMenuOpen ? 'hidden' : ''
-    return () => { document.documentElement.style.overflow = '' }
+    if (isMenuOpen) {
+      document.documentElement.style.overflow = 'hidden'
+      if (window.lenis) window.lenis.stop()
+    } else {
+      document.documentElement.style.overflow = ''
+      if (window.lenis) window.lenis.start()
+    }
+    
+    return () => {
+      document.documentElement.style.overflow = ''
+      if (window.lenis) window.lenis.start()
+    }
   }, [isMenuOpen])
 
 
