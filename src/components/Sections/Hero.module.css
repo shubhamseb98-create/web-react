@@ -1,175 +1,274 @@
-.heroSection {
+/* ════════════════════════════════════════
+   HERO
+════════════════════════════════════════ */
+.hero {
   position: relative;
   width: 100%;
-  height: 100vh;
-  min-height: 700px;
-  background: var(--clr-dark);
+  height: 100dvh;
+  min-height: 620px;
+  background: #0d0d0d;
+  overflow: hidden;
 }
 
-.swiperContainer {
-  width: 100%;
-  height: 100%;
-}
-
-.slideInner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.bgImage {
+/* ── Slides — all absolute, stacked. GSAP sets opacity + mask ── */
+.slide {
   position: absolute;
   inset: 0;
-  background-size: cover;
-  background-position: center;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform-origin: center center;
+  will-change: transform, opacity;
+}
+
+/* Inner — counter-rotates against .slide so video+text stay aligned */
+.inner {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+/* ── Video background ── */
+.bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;       /* video fills the slide like background-size: cover */
+  object-position: center;
   z-index: 0;
-  transform: scale(1.05);
-  transition: transform 6s ease-out;
+  display: block;
 }
 
-:global(.swiper-slide-active) .bgImage {
-  transform: scale(1);
-}
-
-.overlay {
+/* ── Gradient darkens bottom + top so text is readable ── */
+.gradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.2) 100%);
   z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(0,0,0,0.5) 0%,
+    rgba(0,0,0,0)   18%,
+    rgba(0,0,0,0)   55%,
+    rgba(0,0,0,0.85) 100%
+  );
 }
 
-.content {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-}
-
-.title {
-  font-family: var(--font-heading);
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  /* Reduced from 4.5rem max */
-  font-weight: var(--fw-bold);
-  color: var(--clr-white);
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  margin-bottom: 1.5rem;
-}
-
-.description {
-  font-family: var(--font-body);
-  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
-  /* Reduced from 1.25rem max */
-  color: var(--clr-text-light);
-  line-height: 1.6;
-  margin-bottom: 2.5rem;
-  max-width: 800px;
-}
-
-.btnOutline {
-  display: inline-block;
-  padding: 1rem 2.5rem;
-  border: 1px solid var(--clr-white);
-  color: var(--clr-white);
-  font-family: var(--font-heading);
-  font-size: 0.875rem;
-  font-weight: var(--fw-bold);
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  transition: all var(--transition-normal);
-  background: transparent;
-}
-
-.btnOutline:hover {
-  background: var(--clr-white);
-  color: var(--clr-dark);
-}
-
-/* Custom Controls */
-.sliderControls {
+/* ── Text ── */
+.textWrap {
   position: absolute;
-  right: 1.5rem;
-  bottom: 2rem;
-  top: auto;
-  transform: none;
+  inset: 0;
+  z-index: 4;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  /* Push text up above controls */
+  padding-bottom: clamp(7rem, 14vw, 11rem);
+  padding-inline: 2.4rem;
+  pointer-events: none;
+}
+
+.textInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  max-width: 1000px;
+  pointer-events: auto;
+}
+
+.heading {
+  font-size: clamp(3rem, 8vw, 10rem);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: #fff;
+  text-shadow: 0 2px 40px rgba(0,0,0,0.4);
+  margin: 0 0 1.4rem;
+}
+
+.subheading {
+  font-size: clamp(1rem, 2vw, 1.8rem);
+  font-weight: 300;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.85);
+  max-width: 680px;
+  text-wrap: balance;
+  margin: 0 0 2.5rem;
+}
+
+/* ── CTA pill — matches CodePen cream button ── */
+.cta {
+  display: inline-block;
+  background: #f3efea;
+  color: #222;
+  font-size: clamp(1rem, 1.4vw, 1.5rem);
+  font-weight: 600;
+  padding: 1.1rem 3.4rem;
+  border-radius: 100rem;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  white-space: nowrap;
+}
+
+.cta:hover {
+  background: #111;
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 14px 44px rgba(0,0,0,0.55);
+}
+
+.cta span { display: block; }
+
+/* ════════════════════════════════════════
+   BOTTOM BLUR BAND — 5 stacked layers
+   (exact match to CodePen blur)
+════════════════════════════════════════ */
+.blurBand {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 170px;
   z-index: 10;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 1.5rem;
+  pointer-events: none;
 }
 
-@media (min-width: 768px) {
-  .sliderControls {
-    right: 2rem;
-    top: 50%;
-    bottom: auto;
-    transform: translateY(-50%);
-    flex-direction: column;
-    gap: 2rem;
-  }
+.bl {
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
 }
 
-@media (min-width: 992px) {
-  .sliderControls {
-    right: 4rem;
-  }
-}
-
-:global(.custom-pagination) {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  align-items: center;
-}
-
-@media (min-width: 768px) {
-  :global(.custom-pagination) {
-    flex-direction: column;
-    gap: 1.25rem;
-  }
-}
-
-:global(.custom-pagination .swiper-pagination-bullet) {
-  width: 12px;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.4);
-  border-radius: 0;
-  margin: 0 !important;
-  opacity: 1;
-  transition: all var(--transition-normal);
-  cursor: pointer;
-}
-
-:global(.custom-pagination .swiper-pagination-bullet-active) {
-  width: 24px;
-  background: var(--clr-white);
-}
-
-.arrows {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  background: rgba(0, 0, 0, 0.4);
-  padding: 0.5rem 1rem;
-  border-radius: 40px;
+.bl1 {
   backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  mask-image: linear-gradient(to top, transparent 0%, transparent 40%, #000 60%, #000 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to top, transparent 0%, transparent 40%, #000 60%, #000 80%, transparent 100%);
+}
+.bl2 {
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  mask-image: linear-gradient(to top, transparent 0%, transparent 20%, #000 40%, #000 60%, transparent 80%);
+  -webkit-mask-image: linear-gradient(to top, transparent 0%, transparent 20%, #000 40%, #000 60%, transparent 80%);
+}
+.bl3 {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  mask-image: linear-gradient(to top, transparent 0%, #000 20%, #000 40%, transparent 60%);
+  -webkit-mask-image: linear-gradient(to top, transparent 0%, #000 20%, #000 40%, transparent 60%);
+}
+.bl4 {
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  mask-image: linear-gradient(to top, #000 0%, #000 20%, transparent 40%);
+  -webkit-mask-image: linear-gradient(to top, #000 0%, #000 20%, transparent 40%);
+}
+.bl5 {
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  mask-image: linear-gradient(to top, #000 0%, transparent 20%);
+  -webkit-mask-image: linear-gradient(to top, #000 0%, transparent 20%);
 }
 
-.arrows button {
-  color: var(--clr-white);
-  font-size: 1.25rem;
-  opacity: 0.7;
-  transition: opacity var(--transition-normal);
+/* ════════════════════════════════════════
+   CONTROLS — prev/dots/next row at bottom
+════════════════════════════════════════ */
+.controls {
+  position: absolute;
+  z-index: 20;
+  bottom: 2.4rem;
+  left: 0; right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding-inline: 2.4rem;
 }
 
-.arrows button:hover {
-  opacity: 1;
+@media (max-width: 479px) {
+  .controls {
+    justify-content: flex-end;
+    gap: 1rem;
+  }
 }
 
-.divider {
-  width: 1px;
-  height: 16px;
-  background: rgba(255, 255, 255, 0.3);
+/* ── Nav arrow buttons ── */
+.navBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 50%;
+  color: #fff;
+  width: 4rem;
+  height: 4rem;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: background 0.2s ease, transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.navBtn:hover {
+  background: rgba(255,255,255,0.22);
+  transform: scale(1.08);
+}
+
+.navBtn svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* ── Progress dots ── */
+.dots {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0 2rem;
+  height: 4.8rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.dots::-webkit-scrollbar { display: none; }
+
+.dot {
+  position: relative;
+  height: 0.5rem;
+  width: 0.5rem;
+  border-radius: 100rem;
+  background: rgba(255,255,255,0.3);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  overflow: hidden;
+  transition: width 0.35s cubic-bezier(0.34,1.2,0.64,1);
+}
+
+.dotActive {
+  width: 8rem;
+}
+
+@media (min-width: 480px) {
+  .dotActive { width: 13.5rem; }
+}
+
+/* White fill sweeps left-to-right over the duration */
+.fill {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  border-radius: 100rem;
+  transform-origin: left center;
+  transform: scaleX(0);
 }
