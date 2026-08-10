@@ -37,8 +37,8 @@
   --gradient-text: linear-gradient(135deg, #6bc24b, #e8bd63);
 
   /* ── Typography ── */
-  --font-heading: "BT Steinhart", Arial, sans-serif;
-  --font-body: "BT Steinhart", Arial, sans-serif;
+  --font-heading: 'Rajdhani', sans-serif;
+  --font-body: 'Rajdhani', sans-serif;
 
   --fs-display: clamp(2.5rem, 6vw, 4.5rem);
   --fs-h1: clamp(2rem, 5vw, 3.5rem);
