@@ -30,7 +30,16 @@ const Header = () => {
   useEffect(() => {
     setIsMenuOpen(false)
     setMobileDropdownOpen('')
+    // Ensure scroll is unlocked if route changes unexpectedly (e.g., back button)
+    document.documentElement.style.overflow = ''
+    if (window.lenis) window.lenis.start()
   }, [location])
+
+  const closeMenu = () => {
+    setIsMenuOpen(false)
+    document.documentElement.style.overflow = ''
+    if (window.lenis) window.lenis.start()
+  }
 
   /* Lock scroll */
   useEffect(() => {
@@ -206,10 +215,10 @@ const Header = () => {
 
         {/* Menu top bar */}
         <div className={styles.menuHeader}>
-          <Link to="/" className={styles.logo} onClick={() => setIsMenuOpen(false)}>
+          <Link to="/" className={styles.logo} onClick={closeMenu}>
             <img src="/assets/img/logo-new.png" alt="WebTycoons Logo" className={styles.logoImg} />
           </Link>
-          <button className={styles.mobileToggle} onClick={() => setIsMenuOpen(false)} aria-label="Close menu">
+          <button className={styles.mobileToggle} onClick={closeMenu} aria-label="Close menu">
             <svg width="20" height="21" viewBox="0 0 22 23" fill="none">
               <rect x="1.061" y="0.354" width="29.345" height="1.5" transform="rotate(45 1.061 0.354)" fill="currentColor" />
               <rect x="21.811" y="1.061" width="29.345" height="1.5" transform="rotate(135 21.811 1.061)" fill="currentColor" />
@@ -222,14 +231,14 @@ const Header = () => {
           <ul className={styles.menuList}>
             {navLinks.map((link, i) => (
               <li key={link.name} className={styles.menuListItem} style={{ transitionDelay: `${0.15 * i + 0.15}s` }}>
-                <Link to={link.path} className={styles.menuLink} onClick={() => setIsMenuOpen(false)}>
+                <Link to={link.path} className={styles.menuLink} onClick={closeMenu}>
                   {link.name}
                 </Link>
                 {link.hasDropdown && (
                   <div className={`${styles.menuDropdown} ${styles.menuLinkSub}`}>
-                    <Link to="/services/static-website-development" className={styles.menuDropdownLink} onClick={() => setIsMenuOpen(false)}>Static Websites</Link>
-                    <Link to="/services/dynamic-website-development" className={styles.menuDropdownLink} onClick={() => setIsMenuOpen(false)}>Dynamic Websites</Link>
-                    <Link to="/services/e-commerce-website-development" className={styles.menuDropdownLink} onClick={() => setIsMenuOpen(false)}>E-Commerce</Link>
+                    <Link to="/services/static-website-development" className={styles.menuDropdownLink} onClick={closeMenu}>Static Websites</Link>
+                    <Link to="/services/dynamic-website-development" className={styles.menuDropdownLink} onClick={closeMenu}>Dynamic Websites</Link>
+                    <Link to="/services/e-commerce-website-development" className={styles.menuDropdownLink} onClick={closeMenu}>E-Commerce</Link>
                   </div>
                 )}
               </li>
