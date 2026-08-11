@@ -45,7 +45,6 @@ const ContactPage = () => {
   const [submitted, setSubmitted] = useState(false)
 
   useEffect(() => {
-    window.scrollTo(0, 0)
     document.title = 'Contact Us | WebTycoons'
   }, [])
 

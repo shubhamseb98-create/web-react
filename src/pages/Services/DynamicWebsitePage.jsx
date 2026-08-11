@@ -13,7 +13,6 @@ import ServiceCTA from '../../components/ServicePages/ServiceCTA'
 
 const DynamicWebsitePage = () => {
   useEffect(() => {
-    window.scrollTo(0, 0)
     document.title = 'Dynamic Website Development | WebTycoons'
   }, [])
 

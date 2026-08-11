@@ -71,7 +71,6 @@ const BlogDetailsPage = () => {
   const blog = blogs.find(b => b.slug === id) || blogs[0]
 
   useEffect(() => {
-    window.scrollTo(0, 0)
     document.title = `${blog.title} | WebTycoons`
   }, [blog])
 

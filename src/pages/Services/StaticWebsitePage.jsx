@@ -13,7 +13,6 @@ import ServiceCTA from '../../components/ServicePages/ServiceCTA'
 
 const StaticWebsitePage = () => {
   useEffect(() => {
-    window.scrollTo(0, 0)
     document.title = 'Static Website Development | WebTycoons'
   }, [])
 

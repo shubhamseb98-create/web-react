@@ -7,10 +7,14 @@ const FloatingActions = () => {
   const isScrolled = useScrolled(200) // Show back to top after 200px
 
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    })
+    if (window.lenis) {
+      window.lenis.scrollTo(0)
+    } else {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
+    }
   }
 
   // Define contact numbers

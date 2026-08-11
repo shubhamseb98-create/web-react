@@ -13,7 +13,6 @@ import ServiceCTA from '../../components/ServicePages/ServiceCTA'
 
 const EcommerceWebsitePage = () => {
   useEffect(() => {
-    window.scrollTo(0, 0)
     document.title = 'E-Commerce Website Development | WebTycoons'
   }, [])
 

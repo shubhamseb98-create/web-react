@@ -88,7 +88,6 @@ const BlogPage = () => {
   const [searchQuery, setSearchQuery] = useState('')
 
   useEffect(() => {
-    window.scrollTo(0, 0)
     document.title = 'Blog | WebTycoons'
   }, [])
 

@@ -65,7 +65,6 @@ const AboutPage = () => {
   }, { scope: sectionRef })
 
   useEffect(() => {
-    window.scrollTo(0, 0)
     document.title = 'About Us | WebTycoons'
   }, [])
 

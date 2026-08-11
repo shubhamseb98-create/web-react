@@ -10,6 +10,13 @@ function ScrollToTop() {
   const { pathname } = useLocation()
 
   useEffect(() => {
+    // Force unlock scroll and start Lenis synchronously on route change
+    document.documentElement.style.overflow = ''
+    document.body.style.overflow = ''
+    if (window.lenis) {
+      window.lenis.start()
+    }
+
     // Add a slight delay to ensure the DOM is fully rendered for Lenis & GSAP
     const timer = setTimeout(() => {
       if (window.lenis) {

@@ -17,7 +17,6 @@ import CallToAction from '../components/Sections/CallToAction'
 
 const HomePage = () => {
   useEffect(() => {
-    window.scrollTo(0, 0)
     document.title = 'Home | WebTycoons'
   }, [])
 

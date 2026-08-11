@@ -92,7 +92,6 @@ const PortfolioPage = () => {
   const [openFaq, setOpenFaq] = useState(0)
 
   useEffect(() => {
-    window.scrollTo(0, 0)
     document.title = 'Projects | WebTycoons'
   }, [])
 
