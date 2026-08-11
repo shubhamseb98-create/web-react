@@ -71,6 +71,7 @@
   letter-spacing: 0.05em;
   padding: 1rem 2rem;
   border: 2px solid var(--clr-primary);
+  border-radius: 50px;
   transition: all var(--transition-normal);
   text-transform: uppercase;
 }
@@ -93,6 +94,7 @@
   letter-spacing: 0.05em;
   padding: 1rem 2rem;
   border: 1px solid var(--clr-primary);
+  border-radius: 50px;
   transition: all var(--transition-normal);
   text-transform: uppercase;
 }
